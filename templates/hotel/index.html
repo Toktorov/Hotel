@@ -5,12 +5,12 @@
     <div class="feature-full-1col">
         {% for image in hotel.hotel_image.all %}
         <div class="image">
-            <li><img src="{{ image.image.url }}"width="500px" height= "300px" />
+            <li><img href="{% url 'detail' hotel.id %}" src="{{ image.image.url }}"width="500px" height= "300px" />
         </div>
         <div class="desc">
             <h3>{{ hotel.title }}</h3>
             <p>{{ hotel.description }}</p>
-            <p><a href="#" class="btn btn-primary btn-luxe-primary">Look Now <i class="ti-angle-right"></i></a></p>
+            <p><a href="{% url 'detail' hotel.id %}" class="btn btn-primary btn-luxe-primary">Look Now <i class="ti-angle-right"></i></a></p>
         </div>
         {% endfor %}
     </div>
