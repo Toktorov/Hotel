@@ -21,3 +21,15 @@ class Hotel(models.Model):
 
     def __str__(self):
         return f"{self.title}"
+
+class HotelImage(models.Model):
+    hotel = models.ForeignKey(
+        Hotel,
+        on_delete=models.CASCADE,
+        related_name='hotel_image'
+    )
+
+    image = models.ImageField(
+        upload_to='hotel_image',
+        verbose_name='Фото отеля'
+    )
