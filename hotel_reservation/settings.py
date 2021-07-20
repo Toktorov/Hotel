@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     #apps
     'apps.hotels',
+    'apps.categories',
 ]
 
 MIDDLEWARE = [

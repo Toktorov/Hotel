@@ -1,0 +1,13 @@
+{% extends 'index_category.html' %}
+{% block title %}Category{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="feature-full-1col">
+            {% for category in categories %}
+                <div class="desc" role="alert">
+                    <a href="{% url 'detail_category' category.slug %}">{{ category }}</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'index_category.html' %}
+{% block title %}Category{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="alert alert-primary mr-5" role="alert">
+            <p>{{ category.title }}</p>
+            <p>{{ category.parent }}</p>
+
+        </div>
+    </div>
+    <a href="{% url 'update_category' category.slug %}"><span
+            class="badge rounded-pill bg-warning text-dark mr-2" style="width: 50px; height: 50px">Update</span></a>
+    <a href="{% url 'delete_category' category.slug %}">
+        <span class="badge rounded-pill bg-danger" style="width: 50px; height: 50px">Delete</span></a>
+{% endblock %}
