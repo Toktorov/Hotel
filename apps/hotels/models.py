@@ -17,8 +17,21 @@ class Hotel(models.Model):
     )
 
     price = models.PositiveIntegerField(
-        verbose_name='Цена за сутки:'
+        verbose_name='Цена за сутки:',
+        default = 0
         )
+
+    wifi = models.CharField(
+        max_length=10, 
+        blank=True, 
+        default = 'Нет'
+    )
+
+    parking = models.CharField(
+        max_length=20, 
+        blank=True, 
+        default = 'Нет'
+    )
 
     created = models.DateTimeField(
         auto_now_add=True
@@ -45,3 +58,11 @@ class HotelImage(models.Model):
         upload_to='hotel_image',
         verbose_name='Фото отеля'
     )
+
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes_user')
+    hotels = models.ForeignKey(Hotel, on_delete=models.CASCADE, related_name='likes_hotel')
+
+
+    def __str__(self):
+        return f"{self.id}"

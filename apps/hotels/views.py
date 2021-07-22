@@ -10,6 +10,12 @@ def index(request):
 
 def detail_hotel(request, id=id):
     hotels = Hotel.objects.get(id=id)
+    if 'like' in request.POST:
+        try:
+            like = Like.objects.get(user=request.user, hotels=hotels)
+            like.delete()
+        except:
+            Like.objects.create(user=request.user, hotels=hotels)
     return render(request, 'hotel/detail.html', {"hotel": hotels})
 
 def create_hotel(request):
@@ -22,6 +28,9 @@ def create_hotel(request):
             hotel.title = form.cleaned_data['title']
             hotel.description = form.cleaned_data['description']
             hotel.price = form.cleaned_data['price']
+            hotel.category = form.cleaned_data['category']
+            hotel.wifi = form.cleaned_data['wifi']
+            hotel.parking = form.cleaned_data['parking']
             hotel.save()
             formset = HotelImageFormSet(request.POST, request.FILES, instance=hotel)
             if formset.is_valid():

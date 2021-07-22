@@ -1,38 +1,57 @@
 {% extends 'detail_index.html' %}
 {% block content %}
-    {% for image in hotel.hotel_image.all %}
-    <div class="row">
-        <div class="feature-full">
-            <div class="image-full">
-                <p><img src="{{ image.image.url }}" width="1000" height="600" alt="..."
-                        style="margin-top: -10px; margin-left: -0px;"></p>
-                </a>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-        <div class="desc">
-                <h3 style="margin-top: 10px;">{{ hotel.title }}</h3>
-                <p>{{ hotel.description }}</p>
-                <p>Цена за одну ночь {{ hotel.price }} сомов</p>
-            </div>
-        </div>
-        <div class="a-col alternate">
-            <div class="input-field">
-                <label for="date-start">Дата заезда</label>
-                <input type="text" class="form-control" id="date-start" />
-            </div>
-        </div>
-        <div class="a-col alternate">
-            <div class="input-field">
-                <label for="date-end">Дата отъезда</label>
-                <input type="text" class="form-control" id="date-end" />
-            </div>
-        </div>
-        <div class="a-col action">
-            <a href="#">
-                <span>Проверить</span>
-                Номера
+{% for image in hotel.hotel_image.all %}
+<div class="row">
+    <div class="feature-full">
+        <div class="image-full">
+            <p><img src="{{ image.image.url }}" width="1000" height="600" alt="..."
+                    style="margin-top: -10px; margin-left: -0px;"></p>
             </a>
         </div>
-    {% endblock %}
+        {% endfor %}
+    </div>
+</div>
+<div class="desc">
+    <h3 style="margin-top: 10px;">{{ hotel.title }}</h3>
+    <p>{{ hotel.description }}</p>
+    <p>Цена за одну ночь {{ hotel.price }} сомов</p>
+    <p>Wifi: {{ hotel.wifi }}</p>
+    <p>Парковка: {{ hotel.parking}}</p>
+    {% if user.is_authenticated %}
+    <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="like">
+        <button type="submit" class="btn btn-dark" style="margin-top: 10px">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+            </svg>
+        </button>
+    </form>
+    {% else %}
+    {% endif %}
+    <div class="ml-3">
+        <p>{{ hotel.likes_hotel.all.count }} человеку понравилось</p>
+    </div>
+</div>
+</div>
+<div class="a-col alternate">
+    <div class="input-field">
+        <label for="date-start">Дата заезда</label>
+        <input type="text" class="form-control" id="date-start" />
+    </div>
+</div>
+<div class="a-col alternate">
+    <div class="input-field">
+        <label for="date-end">Дата отъезда</label>
+        <input type="text" class="form-control" id="date-end" />
+    </div>
+</div>
+<div class="a-col action">
+    <a href="#">
+        <span>Проверить</span>
+        Номера
+    </a>
+</div>
+{% endblock %}

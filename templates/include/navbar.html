@@ -1,46 +1,53 @@
-<div id="fh5co-wrapper">
-	<div id="fh5co-page">
-	<div id="fh5co-header">
-		<header id="fh5co-header-section">
-			<div class="container">
-				<div class="nav-header">
-					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-					<h1 id="fh5co-logo"><a href="{% url 'index' %}">Final Project</a></h1>
-					<nav id="fh5co-menu-wrap" role="navigation">
-						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li><a class="active" href="{% url 'index' %}">Домой</a></li>
-							<li>
-								<a href="hotel.html" class="fh5co-sub-ddown">Отели</a>
-								<ul class="fh5co-sub-menu">
-								 	<li><a href="#">Люкс</a></li>
-								 	<li><a href="#">Делюкс</a></li>
+<div class="desc">
+	<div id="fh5co-wrapper">
+		<div id="fh5co-page">
+			<div id="fh5co-header">
+				<header id="fh5co-header-section">
+					<div class="container">
+						<div class="nav-header">
+							<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+							<h1 id="fh5co-logo"><a href="{% url 'index' %}">Final Project</a></h1>
+							<nav id="fh5co-menu-wrap" role="navigation">
+								<ul class="sf-menu" id="fh5co-primary-menu">
+									<li><a class="active" href="{% url 'index' %}">Домой</a></li>
 									<li>
-										<a href="#" class="fh5co-sub-ddown">Королевские</a>
+										<a href="hotel.html" class="fh5co-sub-ddown">Отели</a>
 										<ul class="fh5co-sub-menu">
-											<li><a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template" target="_blank">Build</a></li>
-											<li><a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap" target="_blank">Work</a></li>
-											<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap" target="_blank">Light</a></li>
-											<li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap" target="_blank">Relic</a></li>
-											<li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap" target="_blank">Display</a></li>
-											<li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap" target="_blank">Sprint</a></li>
+											<li><a href="#">Люкс</a></li>
+											<li><a href="#">Делюкс</a></li>
+											<li>
+												<a href="#" class="fh5co-sub-ddown">Королевские</a>
+												<ul class="fh5co-sub-menu">
+													<li><a href="http://freehtml5.co/preview/?item=build-free-html5-bootstrap-template"
+															target="_blank">Build</a></li>
+													<li><a href="http://freehtml5.co/preview/?item=work-free-html5-template-bootstrap"
+															target="_blank">Work</a></li>
+													<li><a href="http://freehtml5.co/preview/?item=light-free-html5-template-bootstrap"
+															target="_blank">Light</a></li>
+													<li><a href="http://freehtml5.co/preview/?item=relic-free-html5-template-using-bootstrap"
+															target="_blank">Relic</a></li>
+													<li><a href="http://freehtml5.co/preview/?item=display-free-html5-template-using-bootstrap"
+															target="_blank">Display</a></li>
+													<li><a href="http://freehtml5.co/preview/?item=sprint-free-html5-template-bootstrap"
+															target="_blank">Sprint</a></li>
+												</ul>
+											</li>
+											<li><a href="#">Пятизвёздочные отели</a></li>
 										</ul>
 									</li>
-									<li><a href="#">Пятизвёздочные отели</a></li> 
+									<li><a href="{% url 'index_category' %}">Категории</a></li>
+									<li><a href="contact.html">Связаться с нами</a></li>
+									{% if user.is_authenticated %}
+									<li><a href="{% url 'create' %}">Создать</a></li>
+									<li><a href="{% url 'logout' %}">Выйти</a></li>
+									{% else %}
+									<li><a href="{% url 'login' %}">Вход</a></li>
+									<li><a href="{% url 'signup' %}">Регистрация</a></li>
+									{% endif %}
 								</ul>
-							</li>
-							<li><a href="{% url 'index_category' %}">Категории</a></li>
-							<li><a href="contact.html">Связаться с нами</a></li>
-							{% if user.is_authenticated %}
-							<li><a href="{% url 'create' %}">Создать</a></li>
-							<li><a href="{% url 'logout' %}">Выйти</a></li>
-							{% else %}
-							<li><a href="{% url 'login' %}">Вход</a></li>
-							<li><a href="{% url 'signup' %}">Регистрация</a></li>
-							{% endif %}
-						</ul>
-					</nav>
-				</div>
+							</nav>
+						</div>
+					</div>
+				</header>
 			</div>
-		</header>
-		
-	</div>
+		</div>
