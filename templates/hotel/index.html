@@ -10,6 +10,7 @@
         <div class="desc">
             <h3>{{ hotel.title }}</h3>
             <p>{{ hotel.description | truncatewords:10 }}</p>
+            <p>{{ hotel.price }} сомов за одну ночь</p>
             <p><a href="{% url 'detail' hotel.id %}" class="btn btn-primary btn-luxe-primary">Смотреть<i class="ti-angle-right"></i></a></p>
         </div>
         {% endfor %}

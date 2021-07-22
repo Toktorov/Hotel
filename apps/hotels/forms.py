@@ -7,6 +7,7 @@ class HotelForm(ModelForm):
     class Meta:
         model = Hotel
         exclude = []
+        fields = ['title', 'description', 'price' ]
         widgets = {
             'title': forms.TextInput(attrs={'class': "form-control"}),
             'description': forms.Textarea(attrs={'class': 'form-control'}),

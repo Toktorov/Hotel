@@ -14,6 +14,25 @@
         <div class="desc">
                 <h3 style="margin-top: 10px;">{{ hotel.title }}</h3>
                 <p>{{ hotel.description }}</p>
+                <p>Цена за одну ночь {{ hotel.price }} сомов</p>
             </div>
+        </div>
+        <div class="a-col alternate">
+            <div class="input-field">
+                <label for="date-start">Дата заезда</label>
+                <input type="text" class="form-control" id="date-start" />
+            </div>
+        </div>
+        <div class="a-col alternate">
+            <div class="input-field">
+                <label for="date-end">Дата отъезда</label>
+                <input type="text" class="form-control" id="date-end" />
+            </div>
+        </div>
+        <div class="a-col action">
+            <a href="#">
+                <span>Проверить</span>
+                Номера
+            </a>
         </div>
     {% endblock %}

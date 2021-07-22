@@ -13,15 +13,21 @@ def detail_hotel(request, id=id):
     return render(request, 'hotel/detail.html', {"hotel": hotels})
 
 def create_hotel(request):
-    form = HotelForm(request.POST, None)
-    HotelImageFormset = inlineformset_factory(Hotel, HotelImage, form=HotelImageForm, extra=1)
-    if form.is_valid():
-        hotel = form.save()
-        formset = HotelImageFormset(request.POST, request.FILES, instance=hotel)
-        if formset.is_valid():
-            formset.save()
-        return redirect('index')
-    formset = HotelImageFormset()
+    form = HotelForm(request.POST or None)
+    HotelImageFormSet = inlineformset_factory(Hotel, HotelImage, form=HotelImageForm, extra=1)
+    if request.method == 'POST':
+        if form.is_valid():
+            hotel = Hotel()
+            hotel.user = request.user
+            hotel.title = form.cleaned_data['title']
+            hotel.description = form.cleaned_data['description']
+            hotel.price = form.cleaned_data['price']
+            hotel.save()
+            formset = HotelImageFormSet(request.POST, request.FILES, instance=hotel)
+            if formset.is_valid():
+                formset.save()
+            return redirect('index')
+    formset = HotelImageFormSet()
     return render(request, 'hotel/create.html', locals())
 
 def update_hotel(request, id):
