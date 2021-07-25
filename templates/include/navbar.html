@@ -44,6 +44,10 @@
 									<li><a href="{% url 'login' %}">Вход</a></li>
 									<li><a href="{% url 'signup' %}">Регистрация</a></li>
 									{% endif %}
+									{% if user.is_authenticated and user != user.username %}
+									<li><a href="{% url 'profile' user.username %}">Welcome {{ user.username }}!</a></li>
+									{% else %}
+        							{% endif %}
 								</ul>
 							</nav>
 						</div>

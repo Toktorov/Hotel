@@ -34,24 +34,35 @@
     <div class="ml-3">
         <p>{{ hotel.likes_hotel.all.count }} человеку понравилось</p>
     </div>
-</div>
-</div>
-<div class="a-col alternate">
-    <div class="input-field">
-        <label for="date-start">Дата заезда</label>
-        <input type="text" class="form-control" id="date-start" />
+    <div class="comments-area">
+        <h4 style="margin-top: 20px; margin-left: 5px;">{{ hotel.comment.all.count }} коментов:</h4>
+        {% if user.is_authenticated %}
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="hidden" name="comment" value="{{ comment.id }}">
+                <textarea style="margin-left: 5px;" rows="4" cols="50" name="text" placeholder="Написать отзыв"
+                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Написать отзыв'" required=""></textarea>
+            </div>
+            <button type="submit" class="b" style="margin-left: 5px;">Отправить отзыв</button>
+        </form>
+        {% else %}
+        {% endif %}
+        {% for comment in hotels.get_parent %}
+        <div class="comment-list">
+            <div class="single-comment justify-content-between d-flex">
+                <div class="user justify-content-between d-flex">
+                    <div class="thumb">
+                        <img src="img/blog/c1.jpg" alt="">
+                    </div>
+                    <div class="desc">
+                        <a class="comment_author" style="margin-top: 10px; margin-left: 10px">{{ comment.user }}</a>
+                        <p class="comment" style="margin-top: 10px; margin-left: 10px">{{ comment.text }}</p>
+                        <p class="date" style="margin-left: 10px;">{{ comment.comment_created }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
-<div class="a-col alternate">
-    <div class="input-field">
-        <label for="date-end">Дата отъезда</label>
-        <input type="text" class="form-control" id="date-end" />
-    </div>
-</div>
-<div class="a-col action">
-    <a href="#">
-        <span>Проверить</span>
-        Номера
-    </a>
-</div>
-{% endblock %}
+    {% endblock %}

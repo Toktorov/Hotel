@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block content %}
+{% for order in orders %}
+<div class="row">
+    <div class="feature-full-1col">
+        <div class="desc">
+            <h3>{{ order.name }}</h3>
+            <p>{{ order.surname }}</p>
+            <p>{{ order.fatherland }}</p>
+        </div>
+    </div>
+</div>
+<!-- <p class="card-text">{{ movie.description|truncatewords:20}}</p>
+            <p class="card-text">{{ movie.created }}</p>
+            <p class="card-text">By {{ movie.user }}</p> -->
+{% endfor %}
+{% endblock %}

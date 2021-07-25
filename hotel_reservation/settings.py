@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'apps.hotels',
     'apps.categories',
     'apps.users',
+    'apps.comments',
+    'apps.orders',
 
      # register with google
     'django.contrib.sites',

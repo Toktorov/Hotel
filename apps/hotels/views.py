@@ -16,6 +16,14 @@ def detail_hotel(request, id=id):
             like.delete()
         except:
             Like.objects.create(user=request.user, hotels=hotels)
+    
+    if 'comment' in request.POST:
+            try:
+                text = request.POST.get('text')
+                comment_obj = Comment.objects.create(user=request.user, hotels=hotels, text=text)
+                return redirect('detail', hotel.id)
+            except:
+                print("Error")
     return render(request, 'hotel/detail.html', {"hotel": hotels})
 
 def create_hotel(request):
