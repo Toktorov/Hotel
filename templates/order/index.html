@@ -1,17 +1,15 @@
-{% extends 'index.html' %}
+{% extends 'order_index.html' %}
 {% block content %}
 {% for order in orders %}
-<div class="row">
-    <div class="feature-full-1col">
-        <div class="desc">
-            <h3>{{ order.name }}</h3>
-            <p>{{ order.surname }}</p>
-            <p>{{ order.fatherland }}</p>
-        </div>
-    </div>
+<div class="desc">
+    <h3 class="card-title" style="margin-top: 10px">Отель: {{ order.order }}</h3>
+    <p>Имя: {{ order.name }}</p>
+    <p>Фамилия: {{ order.surname }}</p>
+    <p>Отечество: {{ order.fatherland }}</p>
+    <p>Дата заезда: {{ order.arrival_date }}</p>
+    <p>Дата отъезда: {{ order.departure_date }}</p>
+    <p>Id Card: {{ order.id_card }}</p>
+    <a href="{% url 'detail_order' order.id %}" class="mb-2 btn btn-luxe-primary d-block mx-auto">Смотреть</a>
 </div>
-<!-- <p class="card-text">{{ movie.description|truncatewords:20}}</p>
-            <p class="card-text">{{ movie.created }}</p>
-            <p class="card-text">By {{ movie.user }}</p> -->
 {% endfor %}
 {% endblock %}

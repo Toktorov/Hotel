@@ -18,6 +18,9 @@
     <p>Wifi: {{ hotel.wifi }}</p>
     <p>Парковка: {{ hotel.parking}}</p>
     {% if user.is_authenticated %}
+    <div>
+        <a href="{% url 'create_order' %}" class="mb-2 btn btn-luxe-primary d-block mx-auto">Бронировать</a>
+    </div>
     <form method="post">
         {% csrf_token %}
         <input type="hidden" name="like">
@@ -44,7 +47,7 @@
                 <textarea style="margin-left: 5px;" rows="4" cols="50" name="text" placeholder="Написать отзыв"
                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Написать отзыв'" required=""></textarea>
             </div>
-            <button type="submit" class="b" style="margin-left: 5px;">Отправить отзыв</button>
+            <button type="submit" class="mb-2 btn btn-luxe-primary d-block mx-auto" style="margin-left: 5px;">Отправить отзыв</button>
         </form>
         {% else %}
         {% endif %}

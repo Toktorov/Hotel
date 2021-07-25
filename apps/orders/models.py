@@ -20,23 +20,26 @@ class Order(models.Model):
     )
     
     arrival_date = models.DateTimeField(
-
+        verbose_name='Дата заезда:'
     )
 
     departure_date = models.DateTimeField(
-
+        verbose_name='Дата отъезда:',
     )
 
     name = models.CharField(
-        max_length=50
+        max_length=50,
+         verbose_name='Имя:'
     )
 
     surname = models.CharField(
-        max_length=50
+        max_length=50,
+         verbose_name='Фамилия:'
     )
 
     fatherland = models.CharField(
-        max_length = 50
+        max_length = 50,
+         verbose_name='Отечество:',
     )
 
     id_card = models.PositiveIntegerField(
@@ -46,3 +49,6 @@ class Order(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+    class Meta:
+        ordering = ('-create_at', )
