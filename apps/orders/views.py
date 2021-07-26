@@ -9,6 +9,7 @@ from django.views.generic import ListView, DetailView
 class OrderIndexView(ListView):
     model = Order
     template_name = 'order/index.html'
+    context_object_name = 'orders'
 
 class OrderDetailView(DetailView):
     model = Order
@@ -27,5 +28,5 @@ def create_order(request):
             hotel.wifi = form.cleaned_data['departure_date']
             hotel.id_card = form.cleaned_data['id_card']
             hotel.save()
-            return redirect('order_index')
+            return redirect('detail', hotel.id)
     return render(request, 'order/create.html', locals())

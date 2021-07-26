@@ -5,7 +5,7 @@
     <div class="feature-full">
         <div class="image-full">
             <p><img src="{{ image.image.url }}" width="1000" height="600" alt="..."
-                    style="margin-top: -10px; margin-left: -0px;"></p>
+                    style="margin-top: -10px; margin-left: -0px; border:5px #ffffff  solid;"></p>
             </a>
         </div>
         {% endfor %}
@@ -19,7 +19,7 @@
     <p>Парковка: {{ hotel.parking}}</p>
     {% if user.is_authenticated %}
     <div>
-        <a href="{% url 'create_order' %}" class="mb-2 btn btn-luxe-primary d-block mx-auto">Бронировать</a>
+        <a href="{% url 'create_order' %}" class="btn btn-primary btn-luxe-primary">Бронировать</a>
     </div>
     <form method="post">
         {% csrf_token %}
