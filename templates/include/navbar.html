@@ -38,7 +38,10 @@
 									<li><a href="{% url 'index_category' %}">Категории</a></li>
 									<li><a href="contact.html">Связаться с нами</a></li>
 									{% if user.is_authenticated %}
-									<li><a href="{% url 'create' %}">Создать</a></li>
+										{% if user.is_superuser %}
+										<li><a href="{% url 'create' %}">Создать</a></li>
+										<li><a href="{% url 'order_index' %}">Бронь</a></li>
+										{% endif %}
 									<li><a href="{% url 'logout' %}">Выйти</a></li>
 									{% else %}
 									<li><a href="{% url 'login' %}">Вход</a></li>

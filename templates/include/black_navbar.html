@@ -37,7 +37,10 @@
 									<li><a href="{% url 'index_category' %}" style = "color: black;">Категории</a></li>
 									<li><a href="contact.html" style = "color: black;">Связаться с нами</a></li>
 									{% if user.is_authenticated %}
-									<li><a href="{% url 'create' %}" style = "color: black;">Создать</a></li>
+										{% if user.is_superuser %}
+										<li><a href="{% url 'create' %}" style = "color: black;">Создать</a></li>
+										<li><a href="{% url 'order_index' %}" style = "color: black;">Бронь</a></li>
+										{% endif %}
 									<li><a href="{% url 'logout' %}" style = "color: black;">Выйти</a></li>
 									{% else %}
 									<li><a href="{% url 'login' %}" style = "color: black;">Вход</a></li>

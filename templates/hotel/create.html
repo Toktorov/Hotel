@@ -1,5 +1,6 @@
 {% extends 'index_category.html' %}
 {% block content %}
+{% if user.is_superuser %}
     <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.as_p }}
@@ -37,4 +38,7 @@
             </div>
         </div>
     </div>
+{% else %}
+    <h1 class="card-title" style="margin-top: 10px; color: red;">Вы не можете создавать отели</h1>
+{% endif %}
 {% endblock %}

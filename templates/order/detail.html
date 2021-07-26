@@ -14,6 +14,7 @@
     </div>
     <div class = "col">
         <p>Заявка на бронирование подан в {{ order.create_at }} пользователем {{ order.user }}</p>
+        <p><a href="{% url 'order_index' %}" class="btn btn-primary btn-luxe-primary">Назад<i class="ti-angle-right"></i></a></p>
     </div>
 </div>
 {% endblock %}

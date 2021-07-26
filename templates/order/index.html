@@ -1,5 +1,6 @@
 {% extends 'order_index.html' %}
 {% block content %}
+{% if user.is_superuser %}
 {% for order in orders %}
 <div class="row">
     <div class="container">
@@ -11,9 +12,14 @@
             <p>Дата заезда: {{ order.arrival_date }}</p>
             <p>Дата отъезда: {{ order.departure_date }}</p>
             <p>Id Card: {{ order.id_card }}</p>
-            <a href="{% url 'detail_order' order.id %}" class="mb-2 btn btn-luxe-primary d-block mx-auto">Смотреть<i class="ti-angle-right"></i></a>
+            <p><a href="{% url 'detail_order' order.id %}" class="btn btn-primary btn-luxe-primary">Смотреть<i class="ti-angle-right"></i></a></p>
         </div>
     </div>
 </div>
 {% endfor %}
+{% else %}
+<div class = 'desc'>
+    <h1 class="card-title" style="margin-top: 10px; color: rgb(0, 0, 0);">У вас нет доступа</h1>
+</div>
+{% endif %}
 {% endblock %}

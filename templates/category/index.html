@@ -1,6 +1,7 @@
 {% extends 'index_category.html' %}
 {% block title %}Category{% endblock %}
 {% block content %}
+{% if user.is_superuser %}
     <div class="row">
         <div class="feature-full-1col">
             {% for category in categories %}
@@ -10,4 +11,5 @@
             {% endfor %}
         </div>
     </div>
+{% endif %}
 {% endblock %}
